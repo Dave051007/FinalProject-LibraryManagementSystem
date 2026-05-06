@@ -2,14 +2,14 @@ package org.dave.domain;
 
 public abstract class Item {
     protected String id;
-    protected String name;
+    protected String title;
     protected Status status;
 
     private static int nextId = 1;
 
-    public Item(String name, Status status) {
+    public Item(String title, Status status) {
         this.id = String.format("%05d", nextId++);
-        this.name = name;
+        this.title = title;
         this.status = status;
     }
 
