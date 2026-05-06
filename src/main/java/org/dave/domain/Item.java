@@ -6,4 +6,8 @@ public abstract class Item {
     protected Status status;
 
     private static int nextId = 1;
+
+    public enum Status {
+        BORROWED, IN_STORE, LOST
+    }
 }
