@@ -1,10 +1,11 @@
 package org.dave.domain;
 
+import org.dave.interfaces.Borrower;
 import org.dave.util.Constants;
 
 import java.util.List;
 
-public class Teacher extends User {
+public class Teacher extends User implements Borrower {
     private List<Item> borrowedItems;
 
     public Teacher(String name) {
