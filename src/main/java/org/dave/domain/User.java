@@ -10,4 +10,7 @@ public abstract class User {
         this.id = String.format("%05d", nextId++);
         this.name = name;
     }
+
+    public abstract boolean borrow(Item item);
+
 }
