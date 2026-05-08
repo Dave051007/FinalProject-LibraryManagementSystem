@@ -11,6 +11,4 @@ public abstract class User {
         this.name = name;
     }
 
-    public abstract boolean borrow(Item item);
-
 }
