@@ -25,7 +25,7 @@ public abstract class User {
      * false if user is already registered to the library
      */
     public boolean registerForMembership(Library library) {
-        if (library.getMembers().contains(this)) {
+        if (associatedLibrary != null) {
             return false;
         }
 
