@@ -2,7 +2,10 @@ package org.dave.domain;
 
 import lombok.Getter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 public class Library {
@@ -55,5 +58,21 @@ public class Library {
     public void removeMember(User user) {
         members.remove(user);
         user.setAssociatedLibrary(null);
+    }
+
+    /**
+     * Allows user to search for items available in their associated library
+     * @param keyWord the title of the item the user is searching for
+     * @return a list of items containing the keyWord in their title
+     */
+    public List<Item> streamSearch(String keyWord) {
+        Set<Item> result = items.stream()
+                .filter(item -> item.getTitle().toLowerCase().contains(keyWord))
+                .collect(Collectors.toSet());
+
+        return result.stream()
+                .filter(item -> item.getTitle().toLowerCase().contains(keyWord))
+                .sorted(Comparator.comparing(Item::getTitle))
+                .toList();
     }
 }
