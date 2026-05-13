@@ -44,11 +44,11 @@ public class Student extends User implements Borrower {
      * in library items list
      * @param item the item to be removed
      * @return true if returned item successfully,
-     * false if item is not in borrowedItems list
+     * false if item is not in borrowedItems list or if item is not a book
      */
     @Override
     public boolean returnItem(Item item, Library library) {
-        if (!borrowedItems.contains(item)) {
+        if (!borrowedItems.contains(item) || !(item instanceof Book)) {
             return false;
         }
 
