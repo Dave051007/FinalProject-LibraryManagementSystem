@@ -1,10 +1,12 @@
 package org.dave.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public abstract class User {
     protected String id;
     protected String name;
@@ -32,4 +34,12 @@ public abstract class User {
         library.addMember(this);
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", associatedLibrary=" + associatedLibrary;
+    }
+
 }
