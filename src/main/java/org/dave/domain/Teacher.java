@@ -8,8 +8,8 @@ import java.util.List;
 public class Teacher extends User implements Borrower {
     private List<Item> borrowedItems;
 
-    public Teacher(String name) {
-        super(name);
+    public Teacher(String name, Library associatedLibrary) {
+        super(name, associatedLibrary);
         this.borrowedItems = borrowedItems;
     }
 
