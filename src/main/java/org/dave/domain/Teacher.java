@@ -3,6 +3,7 @@ package org.dave.domain;
 import org.dave.interfaces.Borrower;
 import org.dave.util.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher extends User implements Borrower {
@@ -10,7 +11,7 @@ public class Teacher extends User implements Borrower {
 
     public Teacher(String name, Library associatedLibrary) {
         super(name, associatedLibrary);
-        this.borrowedItems = borrowedItems;
+        this.borrowedItems = new ArrayList<>();
     }
 
     /**
