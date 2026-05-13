@@ -3,6 +3,7 @@ package org.dave.domain;
 public abstract class User {
     protected String id;
     protected String name;
+    protected String associatedLibrary;
 
     private static int nextId = 1;
 
