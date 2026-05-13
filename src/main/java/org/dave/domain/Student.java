@@ -31,7 +31,7 @@ public class Student extends User implements Borrower {
             throw new IllegalArgumentException("Item is not Book");
         }
 
-        if (borrowedItems.size() == Constants.MAX_BORROWABLE_BOOKS_STUDENTS) {
+        if (borrowedItems.size() >= Constants.MAX_BORROWABLE_BOOKS_STUDENTS) {
             throw new IllegalArgumentException("Too many borrowed items");
         }
 
