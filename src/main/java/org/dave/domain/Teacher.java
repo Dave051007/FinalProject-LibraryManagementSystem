@@ -22,7 +22,7 @@ public class Teacher extends User implements Borrower {
      * false if borrowed book is already in borrowedItems list
      */
     @Override
-    public boolean borrowItem(Item item) {
+    public boolean borrowItem(Item item, Library library) {
         if (borrowedItems.size() == Constants.MAX_BORROWABLE_ITEMS_TEACHERS) {
             throw new IllegalArgumentException("Too many borrowed items");
         }
@@ -33,5 +33,10 @@ public class Teacher extends User implements Borrower {
 
         borrowedItems.add(item);
         return true;
+    }
+
+    @Override
+    public boolean returnItem(Item item, Library library) {
+        return false;
     }
 }

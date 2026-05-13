@@ -23,7 +23,7 @@ public class Student extends User implements Borrower {
      * false if borrowed book is already in borrowedItems list
      */
     @Override
-    public boolean borrowItem(Item item) {
+    public boolean borrowItem(Item item, Library library) {
         if (!(item instanceof Book)) {
             throw new IllegalArgumentException("Item is not Book");
         } else if (borrowedItems.size() == Constants.MAX_BORROWABLE_BOOKS_STUDENTS) {
@@ -36,5 +36,10 @@ public class Student extends User implements Borrower {
 
         borrowedItems.add(item);
         return true;
+    }
+
+    @Override
+    public boolean returnItem(Item item, Library library) {
+        return false;
     }
 }
