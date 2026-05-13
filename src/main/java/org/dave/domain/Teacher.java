@@ -37,8 +37,21 @@ public class Teacher extends User implements Borrower {
         return true;
     }
 
+    /**
+     * Removes item from borrowedItem list, then adds item back
+     * in library items list
+     * @param item the item to be removed
+     * @return true if returned item successfully,
+     * false if item is not in borrowedItems list
+     */
     @Override
     public boolean returnItem(Item item, Library library) {
-        return false;
+        if (!borrowedItems.contains(item)) {
+            return false;
+        }
+
+        borrowedItems.remove(item);
+        library.addItem(item);
+        return true;
     }
 }
