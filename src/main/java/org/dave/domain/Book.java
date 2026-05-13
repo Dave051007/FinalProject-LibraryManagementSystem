@@ -7,6 +7,11 @@ public class Book extends Item {
 
     public Book(String title, Status status, String isbn, String author, String genre) {
         super(title, status);
+
+        if (!isValidISBN(isbn)) {
+            throw new IllegalArgumentException("ISBN is invalid");
+        }
+
         this.isbn = isbn;
         this.author = author;
         this.genre = genre;
