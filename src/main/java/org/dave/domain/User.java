@@ -18,4 +18,18 @@ public abstract class User {
         this.associatedLibrary = associatedLibrary;
     }
 
+    /**
+     * Registers the user to a Library to be able to borrow its items
+     * @param library the library to be registered to
+     * @return true if registered successfully,
+     * false if user is already registered to the library
+     */
+    public boolean registerForMembership(Library library) {
+        if (library.getMembers().contains(this)) {
+            return false;
+        }
+
+        library.addMember(this);
+        return true;
+    }
 }
