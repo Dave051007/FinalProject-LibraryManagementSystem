@@ -38,5 +38,6 @@ public class Library {
      */
     public void addMember(User user) {
         members.add(user);
+        user.setAssociatedLibrary(this);
     }
 }
