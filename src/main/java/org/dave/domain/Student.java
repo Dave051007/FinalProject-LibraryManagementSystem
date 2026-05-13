@@ -42,8 +42,9 @@ public class Student extends User implements Borrower {
     /**
      * Removes book from borrowedItem list, then adds book back
      * in library items list
-     * @param item
-     * @return
+     * @param item the item to be removed
+     * @return true if returned item successfully,
+     * false if item is not in borrowedItems list
      */
     @Override
     public boolean returnItem(Item item, Library library) {
