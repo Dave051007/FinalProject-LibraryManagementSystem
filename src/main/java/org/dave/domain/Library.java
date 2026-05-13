@@ -1,7 +1,6 @@
 package org.dave.domain;
 
 import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 

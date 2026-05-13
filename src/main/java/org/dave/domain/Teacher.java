@@ -1,7 +1,6 @@
 package org.dave.domain;
 
 import org.dave.util.Constants;
-import java.util.ArrayList;
 
 public class Teacher extends BorrowingUser {
 
@@ -37,6 +36,7 @@ public class Teacher extends BorrowingUser {
 
         borrowedItems.add(item);
         associatedLibrary.getItems().remove(item);
+
         return true;
     }
 }

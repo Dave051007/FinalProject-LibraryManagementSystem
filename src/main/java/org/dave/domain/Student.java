@@ -1,9 +1,6 @@
 package org.dave.domain;
 
-import org.dave.interfaces.Borrower;
 import org.dave.util.Constants;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Student extends BorrowingUser {
 

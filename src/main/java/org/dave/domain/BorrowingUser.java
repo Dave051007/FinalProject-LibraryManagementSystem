@@ -1,7 +1,6 @@
 package org.dave.domain;
 
 import org.dave.interfaces.Borrower;
-
 import java.util.ArrayList;
 import java.util.List;
 
