@@ -24,6 +24,10 @@ public class Teacher extends User implements Borrower {
      */
     @Override
     public boolean borrowItem(Item item) {
+        if (associatedLibrary == null) {
+            throw new IllegalStateException("User is not registered to a library");
+        }
+
         if (!associatedLibrary.hasItem(item)) {
             throw new IllegalArgumentException(String.format("%s is not available", item.getTitle()));
         }
