@@ -1,8 +1,10 @@
 package org.dave.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public abstract class User {
     protected String id;
     protected String name;
