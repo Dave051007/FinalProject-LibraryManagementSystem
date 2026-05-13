@@ -16,4 +16,12 @@ public class Library {
     public boolean hasItem(Item item) {
         return items.contains(item);
     }
+
+    /**
+     * Adds an item in the Library items list
+     * @param item the item to be added
+     */
+    public void addItem(Item item) {
+        items.add(item);
+    }
 }
