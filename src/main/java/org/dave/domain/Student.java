@@ -22,8 +22,8 @@ public class Student extends User implements Borrower {
      * false if borrowed book is already in borrowedItems list
      */
     @Override
-    public boolean borrowItem(Item item, Library library) {
-        if (!library.hasItem(item)) {
+    public boolean borrowItem(Item item) {
+        if (!associatedLibrary.hasItem(item)) {
             throw new IllegalArgumentException("Book is not available");
         } else if (!(item instanceof Book)) {
             throw new IllegalArgumentException("Item is not Book");
@@ -47,13 +47,13 @@ public class Student extends User implements Borrower {
      * false if item is not in borrowedItems list or if item is not a book
      */
     @Override
-    public boolean returnItem(Item item, Library library) {
+    public boolean returnItem(Item item) {
         if (!borrowedItems.contains(item) || !(item instanceof Book)) {
             return false;
         }
 
         borrowedItems.remove(item);
-        library.addItem(item);
+        associatedLibrary.addItem(item);
         return true;
     }
 }

@@ -22,8 +22,8 @@ public class Teacher extends User implements Borrower {
      * false if borrowed book is already in borrowedItems list
      */
     @Override
-    public boolean borrowItem(Item item, Library library) {
-        if (!library.hasItem(item)) {
+    public boolean borrowItem(Item item) {
+        if (!associatedLibrary.hasItem(item)) {
             throw new IllegalArgumentException(String.format("%s is not available", item.getTitle()));
         } else if (borrowedItems.size() == Constants.MAX_BORROWABLE_ITEMS_TEACHERS) {
             throw new IllegalArgumentException("Too many borrowed items");
@@ -45,13 +45,13 @@ public class Teacher extends User implements Borrower {
      * false if item is not in borrowedItems list
      */
     @Override
-    public boolean returnItem(Item item, Library library) {
+    public boolean returnItem(Item item) {
         if (!borrowedItems.contains(item)) {
             return false;
         }
 
         borrowedItems.remove(item);
-        library.addItem(item);
+        associatedLibrary.addItem(item);
         return true;
     }
 }
