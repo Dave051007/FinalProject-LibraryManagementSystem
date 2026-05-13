@@ -12,10 +12,10 @@ public abstract class User {
 
     private static int nextId = 1;
 
-    public User(String name, Library associatedLibrary) {
+    public User(String name) {
         this.id = String.format("%05d", nextId++);
         this.name = name;
-        this.associatedLibrary = associatedLibrary;
+        this.associatedLibrary = null;
     }
 
     /**

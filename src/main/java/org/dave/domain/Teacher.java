@@ -9,8 +9,8 @@ import java.util.List;
 public class Teacher extends User implements Borrower {
     private List<Item> borrowedItems;
 
-    public Teacher(String name, Library associatedLibrary) {
-        super(name, associatedLibrary);
+    public Teacher(String name) {
+        super(name);
         this.borrowedItems = new ArrayList<>();
     }
 
