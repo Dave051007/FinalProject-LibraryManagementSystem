@@ -1,10 +1,14 @@
 package org.dave.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Book extends Item {
     private String isbn;
     private String author;
