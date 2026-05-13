@@ -2,7 +2,6 @@ package org.dave.domain;
 
 import org.dave.interfaces.Borrower;
 import org.dave.util.Constants;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +39,12 @@ public class Student extends User implements Borrower {
         return true;
     }
 
+    /**
+     * Removes book from borrowedItem list, then adds book back
+     * in library items list
+     * @param item
+     * @return
+     */
     @Override
     public boolean returnItem(Item item, Library library) {
         return false;
