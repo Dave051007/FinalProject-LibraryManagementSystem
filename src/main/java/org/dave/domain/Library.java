@@ -42,11 +42,18 @@ public class Library {
 
     /**
      * Removes item in the items list
-     * @param item
+     * @param item the item to be removed
      */
     public void removeItem(Item item) {
         items.remove(item);
     }
 
-
+    /**
+     * Removes a user in the members list
+     * @param user the user to be removed
+     */
+    public void removeMember(User user) {
+        members.remove(user);
+        user.setAssociatedLibrary(null);
+    }
 }
