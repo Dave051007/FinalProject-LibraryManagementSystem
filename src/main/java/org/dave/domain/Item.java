@@ -20,6 +20,13 @@ public abstract class Item {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", status=" + status;
+    }
+
     public enum Status {
         BORROWED, IN_STORE, LOST
     }
