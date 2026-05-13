@@ -37,6 +37,7 @@ public class Teacher extends User implements Borrower {
         }
 
         borrowedItems.add(item);
+        associatedLibrary.getItems().remove(item);
         return true;
     }
 

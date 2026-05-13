@@ -40,6 +40,7 @@ public class Student extends User implements Borrower {
         }
 
         borrowedItems.add(item);
+        associatedLibrary.getItems().remove(item);
         return true;
     }
 
