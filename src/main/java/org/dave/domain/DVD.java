@@ -1,5 +1,10 @@
 package org.dave.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class DVD extends Item {
     private String director;
     private int duration;

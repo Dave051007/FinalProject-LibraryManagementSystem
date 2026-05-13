@@ -1,8 +1,12 @@
 package org.dave.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
+@EqualsAndHashCode
 public abstract class Item {
     protected String id;
     protected String title;
