@@ -1,12 +1,19 @@
 package org.dave.domain;
 
 import lombok.Getter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public class Library {
     private List<Item> items;
     private List<User> members;
+
+    public Library() {
+        this.items = new ArrayList<>();
+        this.members = new ArrayList<>();
+    }
 
     /**
      * Check if item is inside List of items
