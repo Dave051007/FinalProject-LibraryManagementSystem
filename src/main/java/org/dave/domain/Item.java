@@ -1,5 +1,8 @@
 package org.dave.domain;
 
+import lombok.Getter;
+
+@Getter
 public abstract class Item {
     protected String id;
     protected String title;
