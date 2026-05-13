@@ -40,6 +40,7 @@ public class Student extends BorrowingUser {
 
         borrowedItems.add(item);
         associatedLibrary.getItems().remove(item);
+        item.setStatus(Item.Status.BORROWED);
 
         return true;
     }
