@@ -39,4 +39,14 @@ public class Library {
         members.add(user);
         user.setAssociatedLibrary(this);
     }
+
+    /**
+     * Removes item in the items list
+     * @param item
+     */
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+
+
 }
