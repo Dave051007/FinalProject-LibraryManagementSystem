@@ -1,9 +1,13 @@
 package org.dave.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.dave.interfaces.Borrower;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public abstract class BorrowingUser extends User implements Borrower {
     protected List<Item> borrowedItems;
 
