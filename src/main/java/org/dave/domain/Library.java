@@ -6,7 +6,7 @@ import java.util.List;
 @Getter
 public class Library {
     private List<Item> items;
-    private List<Item> members;
+    private List<User> members;
 
     /**
      * Check if item is inside List of items
@@ -23,5 +23,13 @@ public class Library {
      */
     public void addItem(Item item) {
         items.add(item);
+    }
+
+    /**
+     * Adds a user to the member list
+     * @param user the user to be added
+     */
+    public void addMember(User user) {
+        members.add(user);
     }
 }
