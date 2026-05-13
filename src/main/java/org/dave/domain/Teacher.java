@@ -23,7 +23,9 @@ public class Teacher extends User implements Borrower {
      */
     @Override
     public boolean borrowItem(Item item, Library library) {
-        if (borrowedItems.size() == Constants.MAX_BORROWABLE_ITEMS_TEACHERS) {
+        if (!library.hasItem(item)) {
+            throw new IllegalArgumentException(String.format("%s is not available", item.getTitle()));
+        } else if (borrowedItems.size() == Constants.MAX_BORROWABLE_ITEMS_TEACHERS) {
             throw new IllegalArgumentException("Too many borrowed items");
         }
 
