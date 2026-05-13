@@ -48,6 +48,12 @@ public class Student extends User implements Borrower {
      */
     @Override
     public boolean returnItem(Item item, Library library) {
-        return false;
+        if (!borrowedItems.contains(item)) {
+            return false;
+        }
+
+        borrowedItems.remove(item);
+        library.addItem(item);
+        return true;
     }
 }
