@@ -24,7 +24,9 @@ public class Student extends User implements Borrower {
      */
     @Override
     public boolean borrowItem(Item item, Library library) {
-        if (!(item instanceof Book)) {
+        if (!library.hasItem(item)) {
+            throw new IllegalArgumentException("Book is not available");
+        } else if (!(item instanceof Book)) {
             throw new IllegalArgumentException("Item is not Book");
         } else if (borrowedItems.size() == Constants.MAX_BORROWABLE_BOOKS_STUDENTS) {
             throw new IllegalArgumentException("Too many borrowed items");
