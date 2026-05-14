@@ -148,18 +148,18 @@ public class Library {
 
                 int amount = Integer.parseInt(id.substring(1));
 
-                User user = switch (id.charAt(0)) {
+                switch (id.charAt(0)) {
                     case 'S' -> {
                         studentAmount = Math.max(studentAmount, amount);
-                        yield new Student(name, this);
+                        new Student(name, this);
                     }
                     case 'T' -> {
                         teacherAmount = Math.max(teacherAmount, amount);
-                        yield new Teacher(name, this);
+                        new Teacher(name, this);
                     }
                     case 'A' -> {
                         adminAmount = Math.max(adminAmount, amount);
-                        yield new Admin(name, this);
+                        new Admin(name, this);
                     }
                     default -> {
                         throw new IllegalArgumentException("Unknown user type");
@@ -176,4 +176,85 @@ public class Library {
         Admin.setNextId(adminAmount);
     }
 
+    /**
+     * Loads and initializes books, dvds, magazines from a CSV file.
+     */
+    public void initItems() {
+        initBooks();
+        initDVD();
+        initMagazine();
+    }
+
+    private void initBooks() {
+        int bookAmount = 0;
+        try (Scanner scanner = new Scanner(new File(Constants.BOOK_CSV_PATH))) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] elements = line.split(",");
+
+                String id = elements[0];
+                String title = elements[1];
+                String isbn = elements[2];
+                String author = elements[3];
+                String genre = elements[4];
+
+                int amount = Integer.parseInt(id.substring(1));
+
+                new Book(title, isbn, author, genre, this);
+                bookAmount = Math.max(bookAmount, amount);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        Book.setNextId(bookAmount);
+    }
+
+    private void initDVD() {
+        int dvdAmount = 0;
+        try (Scanner scanner = new Scanner(new File(Constants.DVD_CSV_PATH))) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] elements = line.split(",");
+
+                String id = elements[0];
+                String title = elements[1];
+                String director = elements[2];
+                int duration = Integer.parseInt(elements[3]);
+
+                int amount = Integer.parseInt(id.substring(1));
+
+                new DVD(title, director,duration, this);
+                dvdAmount = Math.max(dvdAmount, amount);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        DVD.setNextId(dvdAmount);
+    }
+
+    private void initMagazine() {
+        int magazineAmount = 0;
+        try (Scanner scanner = new Scanner(new File(Constants.MAGAZINE_CSV_PATH))) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] elements = line.split(",");
+
+                String id = elements[0];
+                String title = elements[1];
+                int issueNumber = Integer.parseInt(elements[2]);
+                String publisher = elements[3];
+
+                int amount = Integer.parseInt(id.substring(1));
+
+                new Magazine(title, issueNumber, publisher, this);
+                magazineAmount = Math.max(magazineAmount, amount);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        Magazine.setNextId(magazineAmount);
+    }
 }
