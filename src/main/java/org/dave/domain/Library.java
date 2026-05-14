@@ -44,10 +44,17 @@ public class Library {
     /**
      * Adds a user to the member list
      * @param user the user to be added
+     * @return true if user added to member list,
+     * false if user already in member list
      */
-    public void addMember(User user) {
+    public boolean addMember(User user) {
+        if (members.contains(user)) {
+            return false;
+        }
+
         members.add(user);
         user.setAssociatedLibrary(this);
+        return true;
     }
 
     /**
@@ -73,10 +80,17 @@ public class Library {
     /**
      * Removes a user in the members list
      * @param user the user to be removed
+     * @return true if member is removed from members list,
+     * false if user is not in members list
      */
-    public void removeMember(User user) {
+    public boolean removeMember(User user) {
+        if (!members.contains(user)) {
+            return false;
+        }
+
         members.remove(user);
         user.setAssociatedLibrary(null);
+        return true;
     }
 
     /**
