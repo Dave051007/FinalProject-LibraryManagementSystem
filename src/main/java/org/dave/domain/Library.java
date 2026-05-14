@@ -30,8 +30,9 @@ public class Library {
      * Adds an item in the Library items list
      * @param item the item to be added
      */
-    public void addItem(Item item) {
+    public void registerItem(Item item) {
         items.add(item);
+        item.setStatus(Item.Status.IN_STORE);
     }
 
     /**
