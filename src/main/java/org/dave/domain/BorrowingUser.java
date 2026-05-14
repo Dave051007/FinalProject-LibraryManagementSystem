@@ -14,10 +14,12 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public abstract class BorrowingUser extends User implements Borrower {
     protected List<Item> borrowedItems;
+    protected List<Item> lostItems;
 
     public BorrowingUser(String name) {
         super(name);
         borrowedItems = new ArrayList<>();
+        lostItems = new ArrayList<>();
     }
 
     /**
