@@ -16,8 +16,8 @@ import java.util.Random;
 public abstract class BorrowingUser extends User implements Borrower {
     protected List<Item> borrowedItems;
 
-    public BorrowingUser(String name) {
-        super(name);
+    public BorrowingUser(String name, Library associatedLibrary) {
+        super(name, associatedLibrary);
         borrowedItems = new ArrayList<>();
     }
 

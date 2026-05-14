@@ -4,8 +4,8 @@ import org.dave.util.Constants;
 
 public class Student extends BorrowingUser {
 
-    public Student(String name) {
-        super(name);
+    public Student(String name, Library associatedLibrary) {
+        super(name, associatedLibrary);
     }
 
     /**
