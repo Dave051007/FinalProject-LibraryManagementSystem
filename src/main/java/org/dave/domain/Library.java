@@ -38,8 +38,6 @@ public class Library {
         }
 
         items.add(item);
-        item.setStatus(Item.Status.IN_STORE);
-
         return true;
     }
 
@@ -67,7 +65,7 @@ public class Library {
         }
 
         items.remove(item);
-        item.setStatus(Item.Status.NOT_REGISTERED);
+        item.setStatus(Item.Status.LOST);
 
         return true;
     }

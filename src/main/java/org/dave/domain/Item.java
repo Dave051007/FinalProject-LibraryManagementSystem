@@ -20,6 +20,8 @@ public abstract class Item {
         this.title = title;
         this.status = Status.IN_STORE;
         this.library = library;
+
+        library.registerItem(this);
     }
 
     @Override
