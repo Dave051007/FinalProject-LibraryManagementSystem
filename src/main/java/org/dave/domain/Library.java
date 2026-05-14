@@ -29,10 +29,17 @@ public class Library {
     /**
      * Adds an item in the Library items list
      * @param item the item to be added
+     * @return true if item is added, false if item is already in Library
      */
-    public void registerItem(Item item) {
+    public boolean registerItem(Item item) {
+        if (items.contains(item)) {
+            return false;
+        }
+
         items.add(item);
         item.setStatus(Item.Status.IN_STORE);
+
+        return true;
     }
 
     /**
