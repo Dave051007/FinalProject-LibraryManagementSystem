@@ -16,7 +16,7 @@ public class Admin extends User implements Reportable {
 
     @Override
     public Map<Item.Status, List<String>> report() {
-       Map<Item.Status, List<String>> result = new TreeMap();
+       Map<Item.Status, List<String>> result = new TreeMap<>();
 
         for (Item item : associatedLibrary.getItems()) {
             result.putIfAbsent(item.getStatus(), new ArrayList<>());
