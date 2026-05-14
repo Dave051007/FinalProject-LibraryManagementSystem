@@ -28,6 +28,6 @@ public abstract class Item {
     }
 
     public enum Status {
-        BORROWED, IN_STORE, LOST
+        BORROWED, IN_STORE, LOST, NOT_REGISTERED
     }
 }
