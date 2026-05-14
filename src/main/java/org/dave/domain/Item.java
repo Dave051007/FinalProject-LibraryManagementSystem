@@ -14,10 +14,10 @@ public abstract class Item {
 
     private static int nextId = 1;
 
-    public Item(String title, Status status) {
+    public Item(String title) {
         this.id = String.format("%05d", nextId++);
         this.title = title;
-        this.status = status;
+        this.status = Status.NOT_REGISTERED;
     }
 
     @Override

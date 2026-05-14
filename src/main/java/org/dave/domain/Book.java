@@ -14,8 +14,8 @@ public class Book extends Item {
     private String author;
     private String genre;
 
-    public Book(String title, Status status, String isbn, String author, String genre) {
-        super(title, status);
+    public Book(String title, String isbn, String author, String genre) {
+        super(title);
 
         if (!isValidISBN(isbn)) {
             throw new IllegalArgumentException("ISBN is invalid");
