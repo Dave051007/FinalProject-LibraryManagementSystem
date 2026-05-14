@@ -296,5 +296,26 @@ public class Library {
         }
     }
 
+    private void exportDVD() {
+        try (FileWriter writer = new FileWriter(Constants.DVD_CSV_PATH)) {
 
+            for (Item item : items) {
+                if (item instanceof DVD dvd) {
+                    writer.write(String.format("%s,%s,%s,%d%n",
+                            dvd.getId(),
+                            dvd.getTitle(),
+                            dvd.getDirector(),
+                            dvd.getDuration()
+                    ));
+                }
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void exportMagazine() {
+        try (F)
+    }
 }
