@@ -1,8 +1,10 @@
 package org.dave.domain;
 
+import lombok.Setter;
 import org.dave.util.Constants;
 
 public class Student extends BorrowingUser {
+    @Setter private static int nextId = 1;
 
     public Student(String name, Library associatedLibrary) {
         super(name, associatedLibrary);

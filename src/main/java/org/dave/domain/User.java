@@ -12,8 +12,6 @@ public abstract class User {
     protected String name;
     protected Library associatedLibrary;
 
-    protected static int nextId = 1;
-
     public User(String name, Library associatedLibrary) {
         this.name = name;
         this.associatedLibrary = associatedLibrary;

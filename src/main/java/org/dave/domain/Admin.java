@@ -1,5 +1,6 @@
 package org.dave.domain;
 
+import lombok.Setter;
 import org.dave.interfaces.Reportable;
 
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Admin extends User implements Reportable {
+    @Setter private static int nextId = 1;
+
 
     public Admin(String name, Library associatedLibrary) {
         super(name, associatedLibrary);
