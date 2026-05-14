@@ -138,4 +138,60 @@ public class LibraryTest {
 
         Assertions.assertThrows(NullPointerException.class, () -> {library.addMember(input);});
     }
+
+    @Test
+    @DisplayName("Existing item is removed -> true")
+    void testRemoveItem1() {
+        Library library = new Library();
+
+        Item item = new Book("Java", "1234567891011", "Dave", "Programming", library);
+        library.registerItem(item);
+
+        boolean expected = true;
+        boolean actual = library.removeItem(item);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Item is removed from library list")
+    void testRemoveItem2() {
+        Library library = new Library();
+
+        Item item = new Book("Java", "1234567891011", "Dave", "Programming", library);
+        library.registerItem(item);
+
+        library.removeItem(item);
+
+        boolean expected = false;
+        boolean actual = library.getItems().contains(item);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Item not in library -> false")
+    void testRemoveItem3() {
+        Library library = new Library();
+        Item item = new Book("Java", "1234567891011", "Dave", "Programming", library);
+
+        library.removeItem(item);
+
+        boolean expected = false;
+        boolean actual = library.removeItem(item);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Borrowed item cannot be removed -> exception")
+    void testRemoveItem4() {
+        Library library = new Library();
+        Item item = new Book("Java", "1234567891011", "Dave", "Programming", library);
+
+        library.registerItem(item);
+        item.setStatus(Item.Status.BORROWED);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {library.removeItem(item);});
+    }
 }
