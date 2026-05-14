@@ -14,10 +14,12 @@ public abstract class User {
 
     private static int nextId = 1;
 
-    public User(String name) {
+    public User(String name, Library associatedLibrary) {
         this.id = String.format("%05d", nextId++);
         this.name = name;
-        this.associatedLibrary = null;
+        this.associatedLibrary = associatedLibrary;
+
+        associatedLibrary.addMember(this);
     }
 
     /**
