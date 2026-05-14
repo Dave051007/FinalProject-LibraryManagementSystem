@@ -11,20 +11,23 @@ public abstract class Item {
     protected String id;
     protected String title;
     protected Status status;
+    protected Library library;
 
     private static int nextId = 1;
 
-    public Item(String title, Status status) {
+    public Item(String title, Library library) {
         this.id = String.format("%05d", nextId++);
         this.title = title;
-        this.status = status;
+        this.status = Status.IN_STORE;
+        this.library = library;
     }
 
     @Override
     public String toString() {
         return "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", status=" + status;
+                ", status=" + status + '\'' +
+                ", library=" + library;
     }
 
     public enum Status {
