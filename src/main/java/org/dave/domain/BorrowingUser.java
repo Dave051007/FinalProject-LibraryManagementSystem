@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.dave.interfaces.Borrower;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Getter
 @Setter
@@ -44,4 +45,22 @@ public abstract class BorrowingUser extends User implements Borrower {
 
     @Override
     public abstract boolean borrowItem(Item item);
+
+    /**
+     * Randomly loses an item in the User borrowedItems list
+     * @return true if task done successfully, false if list is empty
+     */
+    public boolean loseRandomBorrowedItem() {
+        if (borrowedItems.isEmpty()) {
+            return false;
+        }
+
+        Random random = new Random();
+        int randomIdx = random.nextInt(borrowedItems.size());
+
+        Item lostItem = borrowedItems.remove(randomIdx);
+        lostItem.setStatus(Item.Status.LOST);
+
+        return true;
+    }
 }
