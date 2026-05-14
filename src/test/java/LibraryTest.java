@@ -49,5 +49,43 @@ public class LibraryTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Item is added to library list")
+    void testRegisterItem1() {
+        Library library = new Library();
 
+        Item item = new Book("Java", "1234567891011", "Dave", "Programming", library);
+
+        library.registerItem(item);
+
+        boolean expected = true;
+        boolean actual = library.getItems().contains(item);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Duplicate ID -> false")
+    void testRegisterItem2() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java", "1234567891011", "Dave", "Programming", library);
+        Item item2 = new Book("Python", "1234567891011", "John", "Programming", library);
+
+        boolean expected = false;
+        boolean actual = library.registerItem(item2);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Null item -> throws NullPointerException")
+    void testRegisterItem3() {
+        Library library = new Library();
+
+        Item input = null;
+        Item item1 = new Book("Java", "9781234567890123", "Dave", "Programming", library);
+
+        Assertions.assertThrows(NullPointerException.class, () -> {library.registerItem(input);});
+    }
 }
