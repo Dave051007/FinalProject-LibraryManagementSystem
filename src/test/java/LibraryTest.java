@@ -1,6 +1,4 @@
-import org.dave.domain.Book;
-import org.dave.domain.Item;
-import org.dave.domain.Library;
+import org.dave.domain.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -87,5 +85,57 @@ public class LibraryTest {
         Item item1 = new Book("Java", "9781234567890123", "Dave", "Programming", library);
 
         Assertions.assertThrows(NullPointerException.class, () -> {library.registerItem(input);});
+    }
+
+    @Test
+    @DisplayName("User is added to members list")
+    void testAddMember1() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        library.addMember(user);
+
+        boolean expected = true;
+        boolean actual = library.getMembers().contains(user);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Duplicate user -> false")
+    void testAddMember2() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        library.addMember(user);
+
+        boolean expected = false;
+        boolean actual = library.addMember(user);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("User associatedLibrary is set after adding")
+    void testAddMember3() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        library.addMember(user);
+
+        Library expected = library;
+        Library actual = user.getAssociatedLibrary();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Null user -> throws NullPointerException")
+    void testAddMember4() {
+        Library library = new Library();
+
+        User input = null;
+
+        Assertions.assertThrows(NullPointerException.class, () -> {library.addMember(input);});
     }
 }
