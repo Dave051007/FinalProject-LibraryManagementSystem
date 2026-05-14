@@ -13,8 +13,8 @@ public class Magazine extends Item {
     private int issueNumber;
     private int publisher;
 
-    public Magazine(String title, int issueNumber, int publisher) {
-        super(title);
+    public Magazine(String title, int issueNumber, int publisher, Library library) {
+        super(title, library);
         this.issueNumber = issueNumber;
         this.publisher = publisher;
     }
