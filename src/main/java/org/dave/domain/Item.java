@@ -16,7 +16,6 @@ public abstract class Item {
     private static int nextId = 1;
 
     public Item(String title, Library library) {
-        this.id = String.format("%05d", nextId++);
         this.title = title;
         this.status = Status.IN_STORE;
         this.library = library;

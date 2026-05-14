@@ -13,8 +13,12 @@ public class DVD extends Item {
     private String director;
     private int duration;
 
+    @Setter private static int nextId = 1;
+
+
     public DVD(String title, String director, int duration, Library library) {
         super(title, library);
+        this.id = String.format("D%05d", nextId++);
         this.director = director;
         this.duration = duration;
     }

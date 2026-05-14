@@ -14,13 +14,15 @@ public class Book extends Item {
     private String author;
     private String genre;
 
+    @Setter private static int nextId = 1;
+
     public Book(String title, String isbn, String author, String genre, Library library) {
         super(title, library);
 
         if (!isValidISBN(isbn)) {
             throw new IllegalArgumentException("ISBN is invalid");
         }
-
+        this.id = String.format("B%05d", nextId++);
         this.isbn = isbn;
         this.author = author;
         this.genre = genre;
