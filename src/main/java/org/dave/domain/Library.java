@@ -260,8 +260,14 @@ public class Library {
         Magazine.setNextId(magazineAmount);
     }
 
+    /**
+     * Exports all library data to CSV files
+     */
     public void export() {
-
+        exportUsers();
+        exportBooks();
+        exportDVD();
+        exportMagazine();
     }
 
     private void exportUsers() {
