@@ -27,7 +27,8 @@ public class Library {
     /**
      * Adds an item in the Library items list
      * @param item the item to be added
-     * @return true if item is added, false if item is already in Library
+     * @return true if item is added,
+     * false if item has similar id to one of the items in Library
      */
     public boolean registerItem(Item item) {
         for (Item item1 : items) {
