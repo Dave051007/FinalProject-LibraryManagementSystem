@@ -35,7 +35,6 @@ public abstract class BorrowingUser extends User implements Borrower {
         }
 
         borrowedItems.remove(item);
-        associatedLibrary.registerItem(item);
         item.setStatus(Item.Status.IN_STORE);
 
         return true;
