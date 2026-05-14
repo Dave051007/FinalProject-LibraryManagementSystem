@@ -194,4 +194,58 @@ public class LibraryTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {library.removeItem(item);});
     }
+
+    @Test
+    @DisplayName("Existing member is removed -> true")
+    void testRemoveMember1() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        boolean expected = true;
+        boolean actual = library.removeMember(user);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Member is removed from members list")
+    void testRemoveMember2() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        library.removeMember(user);
+
+        boolean expected = false;
+        boolean actual = library.getMembers().contains(user);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("User associatedLibrary is set to null after removal")
+    void testRemoveMember3() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        library.removeMember(user);
+
+        Library expected = null;
+        Library actual = user.getAssociatedLibrary();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Non-existing member -> false")
+    void testRemoveMember4() {
+        Library library = new Library();
+        User user = new Student("Dave", library);
+
+        library.removeMember(user); // already removed from constructor logic
+
+        boolean expected = false;
+        boolean actual = library.removeMember(user);
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
