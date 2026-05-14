@@ -62,6 +62,10 @@ public class Library {
             return false;
         }
 
+        if (item.getStatus() == Item.Status.BORROWED) {
+            throw new IllegalArgumentException("Cannot remove item because it is already borrowed");
+        }
+
         items.remove(item);
         item.setStatus(Item.Status.NOT_REGISTERED);
 
