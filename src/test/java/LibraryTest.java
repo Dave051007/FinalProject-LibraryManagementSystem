@@ -11,7 +11,7 @@ public class LibraryTest {
     void testHasItem1() {
         Library library = new Library();
 
-        Item book = new Book("Java", "9781234567890123", "Dave", "Programming", library);
+        Item book = new Book("Java", "0912839203910", "Dave", "Programming", library);
 
         Item input = book;
         boolean expected = true;
@@ -25,8 +25,8 @@ public class LibraryTest {
     void testHasItem2() {
         Library library = new Library();
 
-        Item book = new Book("Java", "9781234567890123", "Dave", "Programming", library);
-        Item anotherBook = new Book("Python", "9781234567890123", "John", "Programming", library);
+        Item book = new Book("Java", "9027463728372", "Dave", "Programming", library);
+        Item anotherBook = new Book("Python", "9027463728372", "John", "Programming", library);
 
         library.removeItem(anotherBook);
 
@@ -48,4 +48,6 @@ public class LibraryTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+
 }
