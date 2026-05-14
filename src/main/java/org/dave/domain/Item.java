@@ -14,10 +14,10 @@ public abstract class Item {
 
     private static int nextId = 1;
 
-    public Item(String title) {
+    public Item(String title, Status status) {
         this.id = String.format("%05d", nextId++);
         this.title = title;
-        this.status = Status.NOT_REGISTERED;
+        this.status = status;
     }
 
     @Override
@@ -28,6 +28,6 @@ public abstract class Item {
     }
 
     public enum Status {
-        BORROWED, IN_STORE, LOST, NOT_REGISTERED
+        BORROWED, IN_STORE, LOST
     }
 }
