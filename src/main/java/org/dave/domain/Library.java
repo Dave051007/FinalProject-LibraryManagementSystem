@@ -146,17 +146,19 @@ public class Library {
                 String id = elements[0];
                 String name = elements[1];
 
+                int amount = Integer.parseInt(id.substring(1));
+
                 User user = switch (id.charAt(0)) {
                     case 'S' -> {
-                        studentAmount++;
+                        studentAmount = Math.max(studentAmount, amount);
                         yield new Student(name, this);
                     }
                     case 'T' -> {
-                        teacherAmount++;
+                        teacherAmount = Math.max(teacherAmount, amount);
                         yield new Teacher(name, this);
                     }
                     case 'A' -> {
-                        adminAmount++;
+                        adminAmount = Math.max(adminAmount, amount);
                         yield new Admin(name, this);
                     }
                     default -> {
@@ -165,11 +167,13 @@ public class Library {
                 };
             }
 
-            Student.setNextId(studentAmount);
-            Teacher.setNextId(teacherAmount);
-            Admin.setNextId(adminAmount);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+        Student.setNextId(studentAmount);
+        Teacher.setNextId(teacherAmount);
+        Admin.setNextId(adminAmount);
     }
+
 }
