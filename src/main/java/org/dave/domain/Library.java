@@ -52,12 +52,19 @@ public class Library {
     }
 
     /**
-     * Removes item in the items list
+     * Removes an item in the Library items list
      * @param item the item to be removed
+     * @return true if item is removed, false if item is not in Library
      */
-    public void removeItem(Item item) {
+    public boolean removeItem(Item item) {
+        if (!items.contains(item)) {
+            return false;
+        }
+
         items.remove(item);
         item.setStatus(Item.Status.NOT_REGISTERED);
+
+        return true;
     }
 
     /**
