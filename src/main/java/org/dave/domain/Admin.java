@@ -14,6 +14,11 @@ public class Admin extends User implements Reportable {
         this.id = String.format("A%04d", nextId++);
     }
 
+    /**
+     * Generate a report of all borrowed/in-store/lost items
+     * @return a map where the key is the item's status and the value is
+     * a list of item titles with that status
+     */
     @Override
     public Map<Item.Status, List<String>> report() {
        Map<Item.Status, List<String>> result = new TreeMap<>();
