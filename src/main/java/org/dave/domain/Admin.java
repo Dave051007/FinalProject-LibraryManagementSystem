@@ -4,8 +4,9 @@ import org.dave.interfaces.Reportable;
 
 public class Admin extends User implements Reportable {
 
-    public Admin(String name) {
-        super(name);
+    public Admin(String name, Library associatedLibrary) {
+        super(name, associatedLibrary);
+        this.id = String.format("A%04d", nextId++);
     }
 
     @Override

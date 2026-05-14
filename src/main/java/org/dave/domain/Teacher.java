@@ -6,6 +6,7 @@ public class Teacher extends BorrowingUser {
 
     public Teacher(String name, Library associatedLibrary) {
         super(name, associatedLibrary);
+        this.id = String.format("T%04d", nextId++);
     }
 
     /**
