@@ -50,6 +50,7 @@ public class Library {
      */
     public void removeItem(Item item) {
         items.remove(item);
+        item.setStatus(Item.Status.NOT_REGISTERED);
     }
 
     /**
