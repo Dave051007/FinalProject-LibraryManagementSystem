@@ -1,6 +1,9 @@
 package org.dave.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.dave.util.Constants;
 
 import java.io.File;
@@ -11,6 +14,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class Library {
     private List<Item> items;
     private List<User> members;
