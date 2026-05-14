@@ -65,14 +65,33 @@ public class Library {
      * @param keyWord the title of the item the user is searching for
      * @return a list of items containing the keyWord in their title
      */
-    public List<Item> streamSearch(String keyWord) {
+    public List<Item> searchStream(String keyWord) {
         Set<Item> result = items.stream()
-                .filter(item -> item.getTitle().toLowerCase().contains(keyWord))
+                .filter(item -> item.getTitle().toLowerCase().contains(keyWord.toLowerCase()))
                 .collect(Collectors.toSet());
 
         return result.stream()
                 .filter(item -> item.getTitle().toLowerCase().contains(keyWord))
                 .sorted(Comparator.comparing(Item::getTitle))
                 .toList();
+    }
+
+    // recursion version of searchStream
+    public List<Item> searchRecursion(String keyWord) {
+        if (items.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        Item first = items.get(0);
+        Library library = new Library();
+        library.items = new ArrayList<>(items.subList(1, items.size()));
+        List<Item> result = library.searchRecursion(keyWord);
+
+        if (first.getTitle().toLowerCase().contains(keyWord.toLowerCase())
+                && !result.contains(first)) {
+            result.add(first);
+        }
+
+        return result;
     }
 }
