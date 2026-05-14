@@ -1,10 +1,8 @@
 package org.dave.domain;
 
 import lombok.Getter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
@@ -32,8 +30,10 @@ public class Library {
      * @return true if item is added, false if item is already in Library
      */
     public boolean registerItem(Item item) {
-        if (items.contains(item)) {
-            return false;
+        for (Item item1 : items) {
+            if (Objects.equals(item1.getId(), item.getId())) {
+                return false;
+            }
         }
 
         items.add(item);
