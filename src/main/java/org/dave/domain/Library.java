@@ -1,7 +1,10 @@
 package org.dave.domain;
 
 import lombok.Getter;
+import org.dave.util.Constants;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -126,5 +129,47 @@ public class Library {
         }
 
         return result;
+    }
+
+    /**
+     * Loads and initializes users from a CSV file.
+     */
+    public void initUsers() {
+        int studentAmount = 0;
+        int teacherAmount = 0;
+        int adminAmount = 0;
+        try (Scanner scanner = new Scanner(new File(Constants.USER_CSV_PATH))) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] elements = line.split(",");
+
+                String id = elements[0];
+                String name = elements[1];
+
+                User user = switch (id.charAt(0)) {
+                    case 'S' -> {
+                        studentAmount++;
+                        yield new Student(name, this);
+                    }
+                    case 'T' -> {
+                        teacherAmount++;
+                        yield new Teacher(name, this);
+                    }
+                    case 'A' -> {
+                        adminAmount++;
+                        yield new Admin(name, this);
+                    }
+                    default -> {
+                        throw new IllegalArgumentException("Unknown user type");
+                    }
+                };
+            }
+
+            Student.setNextId(studentAmount);
+            Teacher.setNextId(teacherAmount);
+            Admin.setNextId(adminAmount);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
