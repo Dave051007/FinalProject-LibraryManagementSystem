@@ -5,6 +5,8 @@ import org.dave.util.Constants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -257,4 +259,42 @@ public class Library {
 
         Magazine.setNextId(magazineAmount);
     }
+
+    public void export() {
+
+    }
+
+    private void exportUsers() {
+        try (FileWriter fileWriter = new FileWriter(Constants.USER_CSV_PATH)) {
+
+            for (User user : members) {
+                fileWriter.write(user.getId() + "," + user.getName() + "\n");
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void exportBooks() {
+        try (FileWriter fileWriter = new FileWriter(Constants.BOOK_CSV_PATH)) {
+
+            for (Item item : items) {
+                if (item instanceof Book book) {
+                    fileWriter.write(String.format("%s,%s,%s,%s,%s%n",
+                            book.getId(),
+                            book.getTitle(),
+                            book.getIsbn(),
+                            book.getAuthor(),
+                            book.getGenre()
+                    ));
+                }
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
