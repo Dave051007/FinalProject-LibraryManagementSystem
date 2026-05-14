@@ -281,7 +281,7 @@ public class Library {
 
             for (Item item : items) {
                 if (item instanceof Book book) {
-                    fileWriter.write(String.format("%s,%s,%s,%s,%s%n",
+                    fileWriter.write(String.format("%s,%s,%s,%s,%s\n",
                             book.getId(),
                             book.getTitle(),
                             book.getIsbn(),
@@ -301,7 +301,7 @@ public class Library {
 
             for (Item item : items) {
                 if (item instanceof DVD dvd) {
-                    writer.write(String.format("%s,%s,%s,%d%n",
+                    writer.write(String.format("%s,%s,%s,%d\n",
                             dvd.getId(),
                             dvd.getTitle(),
                             dvd.getDirector(),
@@ -316,6 +316,22 @@ public class Library {
     }
 
     private void exportMagazine() {
-        try (F)
+        try (FileWriter writer = new FileWriter(Constants.MAGAZINE_CSV_PATH)) {
+
+            for (Item item : items) {
+                if (item instanceof Magazine magazine) {
+                    writer.write(String.format(
+                            "%s,%s,%d,%s\n",
+                            magazine.getId(),
+                            magazine.getTitle(),
+                            magazine.getIssueNumber(),
+                            magazine.getPublisher()
+                    ));
+                }
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
