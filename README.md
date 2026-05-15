@@ -74,3 +74,15 @@ Each item has:
 
 ---
 
+## Search System
+- Search case-insensitively
+- Filter available items only
+- Remove duplicate titles
+- Sort alphabetically
+
+Two search implementations are provided:
+###  `Stream Search` 
+### `Recursive Search`
+
+---
+
