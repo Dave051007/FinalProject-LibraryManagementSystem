@@ -86,3 +86,39 @@ Two search implementations are provided:
 
 ---
 
+# Project Structure
+```
+📂 LibraryManagementSystem
+ ┣ 📂 src/main/java/com/library
+ ┃ ┣ 📂 domain
+ ┃ ┃ ┣ 📜 Item.java           (Abstract class for library items)
+ ┃ ┃ ┣ 📜 Book.java           (Extends Item)
+ ┃ ┃ ┣ 📜 DVD.java            (Extends Item)
+ ┃ ┃ ┣ 📜 Magazine.java       (Extends Item)
+ ┃ ┃ ┣ 📜 User.java           (Abstract class for users)
+ ┃ ┃ ┣ 📜 BorrowingUser.java  (Extends User)
+ ┃ ┃ ┣ 📜 Student.java        (Extends BorrowingUser)
+ ┃ ┃ ┣ 📜 Teacher.java        (Extends BorrowingUser)
+ ┃ ┃ ┣ 📜 Admin.java          (Extends User)
+ ┃ ┃ ┣ 📜 Library.java        (For the Library)
+ ┃ ┣ 📂 util
+ ┃ ┃ ┣ 📜 Constants.java      (Holds static constants (Optional))
+ ┃ ┣ 📂 interfaces
+ ┃ ┃ ┣ 📜 Reportable.java     (Interface for reporting functionality)
+ ┃ ┃ ┣ 📜 Borrower.java       (Interface for borrowing functionality)
+ ┃ ┣ 📜 Main.java             (Main class to run the system)
+ ┣ 📂 src/main/resources
+ ┃ ┣ 📜 book.csv
+ ┃ ┣ 📜 dvd.csv
+ ┃ ┣ 📜 magazine.csv
+ ┃ ┣ 📜 user.csv
+ ┣ 📂 src/test/java/com/library
+ ┃ ┣ 📜 BorrowingUserTest
+ ┃ ┣ 📜 LibraryTest
+ ┃ ┣ 📜 StudentTest
+ ┃ ┣ 📜 TeacherTest
+ ┣ 📜 pom.xml                 (Maven dependencies)
+ ┗ 📜 README.md
+```
+---
+
