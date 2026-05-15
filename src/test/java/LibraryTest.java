@@ -380,11 +380,11 @@ public class LibraryTest {
         Library library = new Library();
 
         Item item1 = new Book("Java Basics", "3333333333333", "Dave", "Programming", library);
-        Item item2 = new Book("Java Basics", "3333333333333", "John", "Programming", library);
+        Item item2 = new Book("Java Basics", "3333333333333", "Dave", "Programming", library);
 
         String input = "Java";
 
-        List<Item> expected = List.of(item1);
+        List<Item> expected = List.of(item2);
         List<Item> actual = library.searchRecursion(input);
 
         Assertions.assertEquals(expected, actual);
