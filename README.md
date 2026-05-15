@@ -44,3 +44,33 @@ The system supports three user types:
 
 ---
 
+## Item Management
+
+The system supports three item types:
+
+### Book
+Includes:
+- ISBN validation (13 digits)
+- Author
+- Genre
+
+### DVD
+Includes:
+- Director
+- Duration
+
+### Magazine
+Includes:
+- Issue number
+- Publisher
+
+Each item has:
+- Unique ID
+- Title
+- Status:
+    - `IN_STORE`
+    - `BORROWED`
+    - `LOST`
+
+---
+
