@@ -120,12 +120,12 @@ public class Library {
         }
 
         String keywordInLowerCase =  keyword.toLowerCase();
-        Set<Item> set = new HashSet<>();
+        Set<String> set = new HashSet<>();
 
         return items.stream()
                 .filter(item -> item.getTitle().toLowerCase().contains(keywordInLowerCase))
                 .filter(item -> item.getStatus() == Item.Status.IN_STORE)
-                .filter(set::add)
+                .filter(item -> set.add(item.getTitle().toLowerCase()))
                 .sorted(Comparator.comparing(Item::getTitle))
                 .toList();
     }
