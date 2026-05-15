@@ -53,6 +53,4 @@ public class BorrowingUserTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
-
 }
