@@ -329,4 +329,81 @@ public class LibraryTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Recursive search returns matching items")
+    void testSearchRecursion1() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "1111111111111", "Dave", "Programming", library);
+        Item item2 = new Book("Advanced Java", "2222222222222", "John", "Programming", library);
+        Item item3 = new Book("Python Guide", "3333333333333", "Mike", "Programming", library);
+
+        String input = "Java";
+
+        List<Item> expected = List.of(item2, item1);
+        List<Item> actual = library.searchRecursion(input);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Recursive search with no matches -> empty list")
+    void testSearchRecursion2() {
+        Library library = new Library();
+        Item item1 = new Book("Java Basics", "1111111111111", "Dave", "Programming", library);
+
+        String input = "C++";
+
+        List<Item> expected = List.of();
+        List<Item> actual = library.searchRecursion(input);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Null keyword -> empty list")
+    void testSearchRecursion3() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "2222222222222", "Dave", "Programming", library);
+
+        List<Item> expected = List.of();
+        List<Item> actual = library.searchRecursion(null);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Duplicate titles -> only one result")
+    void testSearchRecursion4() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "3333333333333", "Dave", "Programming", library);
+        Item item2 = new Book("Java Basics", "3333333333333", "John", "Programming", library);
+
+        String input = "Java";
+
+        List<Item> expected = List.of(item1);
+        List<Item> actual = library.searchRecursion(input);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Recursive search is case-insensitive")
+    void testSearchRecursion5() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "5555555555555", "Dave", "Programming", library);
+
+        String input = "java";
+
+        List<Item> expected = List.of(item1);
+        List<Item> actual = library.searchRecursion(input);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
 }
