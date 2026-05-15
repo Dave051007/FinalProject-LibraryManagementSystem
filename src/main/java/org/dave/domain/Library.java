@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -49,6 +48,7 @@ public class Library {
         }
 
         items.add(item);
+        export();
         return true;
     }
 
@@ -65,6 +65,8 @@ public class Library {
 
         members.add(user);
         user.setAssociatedLibrary(this);
+
+        export();
         return true;
     }
 
@@ -85,6 +87,7 @@ public class Library {
         items.remove(item);
         item.setStatus(Item.Status.LOST);
 
+        export();
         return true;
     }
 
@@ -101,21 +104,28 @@ public class Library {
 
         members.remove(user);
         user.setAssociatedLibrary(null);
+
+        export();
         return true;
     }
 
     /**
      * Allows user to search for items available in their associated library
-     * @param keyWord the title of the item the user is searching for
+     * @param keyword the title of the item the user is searching for
      * @return a list of items containing the keyWord in their title
      */
-    public List<Item> searchStream(String keyWord) {
-        Set<Item> result = items.stream()
-                .filter(item -> item.getTitle().toLowerCase().contains(keyWord.toLowerCase()))
-                .collect(Collectors.toSet());
+    public List<Item> searchStream(String keyword) {
+        if (keyword == null || keyword.isEmpty()) {
+            return new ArrayList<>();
+        }
 
-        return result.stream()
-                .filter(item -> item.getTitle().toLowerCase().contains(keyWord))
+        String keywordInLowerCase =  keyword.toLowerCase();
+        Set<Item> set = new HashSet<>();
+
+        return items.stream()
+                .filter(item -> item.getTitle().toLowerCase().contains(keywordInLowerCase))
+                .filter(item -> item.getStatus() == Item.Status.IN_STORE)
+                .filter(set::add)
                 .sorted(Comparator.comparing(Item::getTitle))
                 .toList();
     }
