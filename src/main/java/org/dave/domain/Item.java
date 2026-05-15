@@ -26,8 +26,7 @@ public abstract class Item {
     public String toString() {
         return "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", status=" + status + '\'' +
-                ", library=" + library;
+                ", status=" + status;
     }
 
     public enum Status {
