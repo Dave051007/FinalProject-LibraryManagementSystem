@@ -160,3 +160,56 @@ Unit tests cover:
 - Search correctness
 - Duplicate handling
 
+---
+
+# Dependencies
+- Lombok
+- JunitJupiter
+
+---
+
+# Sample Code
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // Create library
+        Library library = new Library();
+
+        // Create users
+        Student student = new Student("John", library);
+        Teacher teacher = new Teacher("Alice", library);
+        Admin admin = new Admin("Dave", library);
+
+        // Create items
+        Book book = new Book("Java Programming", "9781234567890", "James", "Programming", library);
+        DVD dvd = new DVD("Inception", "Nolan", 148, library);
+        Magazine magazine = new Magazine("Tech Weekly", 42, "TechPress", library);
+
+        // Borrow items
+        student.borrowItem(book);
+        teacher.borrowItem(dvd);
+
+        // Return item
+        student.returnItem(book);
+
+        // Teacher loses borrowed item
+        teacher.loseRandomBorrowedItem();
+
+        // Search items
+        System.out.println("Search Results:");
+        System.out.println(library.searchStream("java"));
+
+        // Recursive search
+        System.out.println("Recursive Search:");
+        System.out.println(library.searchRecursion("tech"));
+
+        // Generate admin report
+        System.out.println("Library Report:");
+        System.out.println(admin.report());
+
+        // Export data to CSV
+        library.export();
+    }
+}
+```
