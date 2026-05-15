@@ -132,6 +132,10 @@ public class Library {
 
     // recursion version of searchStream
     public List<Item> searchRecursion(String keyWord) {
+        if (keyWord == null || keyWord.isEmpty()) {
+            return new ArrayList<>();
+        }
+
         if (items.isEmpty()) {
             return new ArrayList<>();
         }
@@ -141,8 +145,15 @@ public class Library {
         library.items = new ArrayList<>(items.subList(1, items.size()));
         List<Item> result = library.searchRecursion(keyWord);
 
-        if (first.getTitle().toLowerCase().contains(keyWord.toLowerCase())
-                && !result.contains(first)) {
+        Set<String> set = new HashSet<>();
+        for (Item item : result) {
+            set.add(item.getTitle().toLowerCase());
+        }
+
+        String firstTitle = first.getTitle().toLowerCase();
+
+        if (firstTitle.contains(keyWord.toLowerCase())
+                && set.add(firstTitle)) {
             result.add(first);
         }
 
