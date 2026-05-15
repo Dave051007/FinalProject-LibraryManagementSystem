@@ -15,7 +15,6 @@ public class DVD extends Item {
 
     @Setter private static int nextId = 1;
 
-
     public DVD(String title, String director, int duration, Library library) {
         super(title, library);
         this.id = String.format("D%05d", nextId++);
