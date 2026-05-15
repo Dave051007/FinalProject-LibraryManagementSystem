@@ -22,3 +22,25 @@ The system supports:
 ---
 
 ## Features
+
+## User Management
+
+The system supports three user types:
+
+### Student
+- Can borrow books only
+- Has borrow limit of 5
+- Can return borrowed books
+- Can lose borrowed books randomly
+
+### Teacher
+- Can borrow any item type
+- Higher borrow limit than students
+- Can return borrowed items
+- Can lose borrowed items randomly
+
+### Admin
+- Can generate reports of library inventory
+
+---
+
