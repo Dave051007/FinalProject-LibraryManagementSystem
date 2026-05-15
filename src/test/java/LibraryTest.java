@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class LibraryTest {
     @Test
     @DisplayName("Item exists in library -> true")
@@ -82,7 +84,7 @@ public class LibraryTest {
         Library library = new Library();
 
         Item input = null;
-        Item item1 = new Book("Java", "9781234567890123", "Dave", "Programming", library);
+        Item item1 = new Book("Java", "1111111111111", "Dave", "Programming", library);
 
         Assertions.assertThrows(NullPointerException.class, () -> {library.registerItem(input);});
     }
@@ -245,6 +247,85 @@ public class LibraryTest {
 
         boolean expected = false;
         boolean actual = library.removeMember(user);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Keyword matches items -> returns results")
+    void testSearchStream1() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "1234567891011", "Dave", "Programming", library);
+        Item item2 = new Book("Advanced Java", "1111111111111", "John", "Programming", library);
+        Item item3 = new Book("Python Guide", "2222222222222", "Mike", "Programming", library);
+
+        List<Item> expected = List.of(item2, item1);
+        List<Item> actual = library.searchStream("Java");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Empty keyword -> empty list")
+    void testSearchStream2() {
+        Library library = new Library();
+        Item item1 = new Book("Java Basics", "1111111111111", "Dave", "Programming", library);
+
+        List<Item> expected = List.of();
+        List<Item> actual = library.searchStream("");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Null keyword -> empty list")
+    void testSearchStream3() {
+        Library library = new Library();
+        Item item1 = new Book("Java Basics", "1111111111111", "Dave", "Programming", library);
+
+        List<Item> expected = List.of();
+        List<Item> actual = library.searchStream(null);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("BORROWED items are not allowed from search")
+    void testSearchStream4() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "5555555555555", "Dave", "Programming", library);
+        item1.setStatus(Item.Status.BORROWED);
+
+        List<Item> expected = List.of();
+        List<Item> actual = library.searchStream("Java");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Duplicate titles -> only one returned")
+    void testSearchStream5() {
+        Library library = new Library();
+
+        Item item1 = new Book("Java Basics", "3333333333333", "Dave", "Programming", library);
+        Item item2 = new Book("Java Basics", "2222222222222", "John", "Programming", library);
+
+        List<Item> actual = library.searchStream("Java");
+        List<Item> expected = List.of(item1);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Search is case-insensitive")
+    void testSearchStream6() {
+        Library library = new Library();
+        Item item1 = new Book("Java Basics", "2839283726151", "Dave", "Programming", library);
+
+        List<Item> expected = List.of(item1);
+        List<Item> actual = library.searchStream("java");
 
         Assertions.assertEquals(expected, actual);
     }
