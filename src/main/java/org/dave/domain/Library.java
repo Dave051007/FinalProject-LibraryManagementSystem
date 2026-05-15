@@ -146,6 +146,7 @@ public class Library {
             result.add(first);
         }
 
+        result.sort(Comparator.comparing(item -> item.getTitle().toLowerCase()));
         return result;
     }
 
