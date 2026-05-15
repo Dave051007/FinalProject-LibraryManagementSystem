@@ -1,12 +1,11 @@
 package org.dave.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Objects;
 
 @Getter
 @Setter
-@EqualsAndHashCode
 public abstract class Item {
     protected String id;
     protected String title;
@@ -33,5 +32,17 @@ public abstract class Item {
 
     public enum Status {
         BORROWED, IN_STORE, LOST
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(id, item.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
