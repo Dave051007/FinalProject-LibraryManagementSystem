@@ -122,3 +122,41 @@ Two search implementations are provided:
 ```
 ---
 
+# Core Methods
+
+## Library
+
+- `registerItem()`
+- `removeItem()`
+- `addMember()`
+- `removeMember()`
+- `searchStream()`
+- `searchRecursion()`
+- `initUsers()`
+- `initItems()`
+- `export()`
+
+## BorrowingUser
+
+- `borrowItem()`
+- `returnItem()`
+- `loseRandomBorrowedItem()`
+
+## Admin
+
+- `report()`
+
+---
+
+# Testing
+
+Unit tests cover:
+
+- Registration logic
+- Member removal
+- Borrowing constraints
+- Returning items
+- Lost item behavior
+- Search correctness
+- Duplicate handling
+
